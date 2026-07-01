@@ -6,8 +6,8 @@ describe("ASSETS manifest", () => {
     expect(ASSETS.gallery).toHaveLength(6)
   })
   it("exposes hero video and poster paths", () => {
-    expect(ASSETS.hero.video).toBe("/assets/hero/hero-video.mp4")
-    expect(ASSETS.hero.poster).toBe("/assets/hero/hero-poster.jpg")
+    expect(ASSETS.hero.video).toBe(`${import.meta.env.BASE_URL}assets/hero/hero-video.mp4`)
+    expect(ASSETS.hero.poster).toBe(`${import.meta.env.BASE_URL}assets/hero/hero-poster.jpg`)
   })
   it("exposes exactly 2 product images", () => {
     expect(Object.keys(ASSETS.products)).toHaveLength(2)
