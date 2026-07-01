@@ -3,16 +3,17 @@ import { useMagneticCursor } from "@/hooks/useMagneticCursor"
 import { Button, type ButtonProps } from "./button"
 
 export function MagneticButton(props: ButtonProps) {
-  const { ref, x, y, onMouseMove, onMouseLeave } = useMagneticCursor<HTMLButtonElement>(0.3)
+  const { ref, x, y, onMouseMove, onMouseLeave } = useMagneticCursor<HTMLDivElement>(0.3)
 
   return (
     <motion.div
+      ref={ref}
       style={{ x, y }}
-      onMouseMove={onMouseMove as any}
-      onMouseLeave={onMouseLeave as any}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
       className="inline-block"
     >
-      <Button ref={ref} {...props} />
+      <Button {...props} />
     </motion.div>
   )
 }
