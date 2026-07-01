@@ -1,7 +1,25 @@
-import { Heart, Share2, MapPin } from "lucide-react"
+import { MapPin } from "lucide-react"
 import { DHDLogo } from "@/components/ui/dhd-logo"
 import { Divider } from "@/components/ui/divider"
 import { CONTACT } from "@/data/contact"
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  )
+}
+
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  )
+}
 
 export function Footer() {
   return (
@@ -28,10 +46,10 @@ export function Footer() {
           <h4 className="mb-4 font-sans text-xs uppercase tracking-[0.3em] text-muted">Follow</h4>
           <div className="flex gap-4">
             <a href="#" aria-label="Instagram" className="text-foreground transition-transform hover:scale-110 hover:text-muted">
-              <Heart className="h-5 w-5" />
+              <InstagramIcon className="h-5 w-5" />
             </a>
             <a href="#" aria-label="Facebook" className="text-foreground transition-transform hover:scale-110 hover:text-muted">
-              <Share2 className="h-5 w-5" />
+              <FacebookIcon className="h-5 w-5" />
             </a>
           </div>
         </div>
