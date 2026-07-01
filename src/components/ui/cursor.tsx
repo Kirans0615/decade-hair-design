@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import { motion, useMotionValue, useSpring } from "framer-motion"
 import { useReducedMotion } from "@/hooks/useReducedMotion"
+import { easeEditorial } from "@/lib/animation-variants"
 
 export function Cursor() {
   const reduced = useReducedMotion()
@@ -31,7 +32,7 @@ export function Cursor() {
       className="pointer-events-none fixed left-0 top-0 z-[70] hidden h-6 w-6 rounded-full border border-foreground mix-blend-difference md:block"
       style={{ x: sx, y: sy }}
       animate={{ scale: hovering ? 2.2 : 1 }}
-      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.25, ease: easeEditorial }}
     />
   )
 }

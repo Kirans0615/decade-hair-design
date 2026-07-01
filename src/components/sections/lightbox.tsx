@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
+import { easeEditorial } from "@/lib/animation-variants"
 
 interface LightboxProps {
   images: readonly string[]
@@ -52,7 +53,7 @@ export function Lightbox({ images, openIndex, onClose, onNavigate }: LightboxPro
             className="max-h-[85vh] max-w-[85vw] object-contain"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.4, ease: easeEditorial }}
             onClick={(e) => e.stopPropagation()}
           />
           <button

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { TESTIMONIALS } from "@/data/testimonials"
 import { SectionHeading } from "@/components/ui/section-heading"
+import { easeEditorial } from "@/lib/animation-variants"
 
 export function Testimonials() {
   const [index, setIndex] = useState(0)
@@ -32,7 +33,7 @@ export function Testimonials() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.6, ease: easeEditorial }}
           >
             <blockquote className="font-display text-2xl italic leading-snug md:text-4xl">
               &ldquo;{current.quote}&rdquo;

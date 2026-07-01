@@ -4,11 +4,13 @@ import { ASSETS } from "@/lib/assets"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { Divider } from "@/components/ui/divider"
 import { fadeUp } from "@/lib/animation-variants"
+import { useReducedMotion } from "@/hooks/useReducedMotion"
 
 export function About() {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] })
   const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"])
+  const reduced = useReducedMotion()
 
   return (
     <section id="about" ref={ref} className="mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-40">
@@ -18,7 +20,7 @@ export function About() {
             src={ASSETS.about.portrait}
             alt="Nat Lewis with a client at the DHD studio"
             className="h-[520px] w-full object-cover"
-            style={{ y }}
+            style={{ y: reduced ? 0 : y }}
           />
         </div>
         <motion.div

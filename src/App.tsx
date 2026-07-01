@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion, MotionConfig } from "framer-motion"
 import { useLenis } from "@/hooks/useLenis"
 import { useReducedMotion } from "@/hooks/useReducedMotion"
 import { DHDLogo } from "@/components/ui/dhd-logo"
@@ -29,7 +29,7 @@ export default function App() {
   }, [reduced])
 
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <AnimatePresence>
         {loading && (
           <motion.div
@@ -58,6 +58,6 @@ export default function App() {
         <BookingCta />
         <Footer />
       </main>
-    </>
+    </MotionConfig>
   )
 }

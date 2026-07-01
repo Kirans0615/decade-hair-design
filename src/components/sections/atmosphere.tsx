@@ -3,12 +3,14 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { ASSETS } from "@/lib/assets"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { fadeUp } from "@/lib/animation-variants"
+import { useReducedMotion } from "@/hooks/useReducedMotion"
 
 export function Atmosphere() {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] })
   const yLead = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"])
   const ySide = useTransform(scrollYProgress, [0, 1], ["6%", "-6%"])
+  const reduced = useReducedMotion()
 
   return (
     <section id="atmosphere" ref={ref} className="relative overflow-hidden py-28 md:py-40">
@@ -21,7 +23,7 @@ export function Atmosphere() {
               src={ASSETS.atmosphere.booth}
               alt="DHD at a trade show, Nat Lewis backdrop and product display"
               className="h-[340px] w-full object-cover md:h-[600px]"
-              style={{ y: yLead }}
+              style={{ y: reduced ? 0 : yLead }}
             />
           </div>
           <div className="overflow-hidden rounded-sm">
@@ -29,7 +31,7 @@ export function Atmosphere() {
               src={ASSETS.gallery[2]}
               alt="Studio interior detail, checkered accent wall"
               className="h-[280px] w-full object-cover object-left"
-              style={{ y: ySide }}
+              style={{ y: reduced ? 0 : ySide }}
             />
           </div>
           <div className="overflow-hidden rounded-sm">
@@ -37,7 +39,7 @@ export function Atmosphere() {
               src={ASSETS.gallery[3]}
               alt="Studio interior detail, natural light and wood floors"
               className="h-[280px] w-full object-cover object-right"
-              style={{ y: ySide }}
+              style={{ y: reduced ? 0 : ySide }}
             />
           </div>
         </div>
