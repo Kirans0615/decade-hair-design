@@ -23,7 +23,12 @@ export default function App() {
   const [loading, setLoading] = useState(!reduced)
 
   useEffect(() => {
-    if (reduced) return
+    // Always resolve the overlay: if the preference flips to reduced while
+    // the intro is up, dismiss immediately instead of stranding it.
+    if (reduced) {
+      setLoading(false)
+      return
+    }
     const timer = setTimeout(() => setLoading(false), 1400)
     return () => clearTimeout(timer)
   }, [reduced])
