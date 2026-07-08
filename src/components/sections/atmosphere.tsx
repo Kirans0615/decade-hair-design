@@ -20,16 +20,16 @@ export function Atmosphere() {
         <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-4">
           <div className="overflow-hidden rounded-sm md:col-span-2 md:row-span-2">
             <motion.img
-              src={ASSETS.atmosphere.booth}
-              alt="DHD at a trade show, Nat Lewis backdrop and product display"
+              src={ASSETS.atmosphere.interior}
+              alt="The DHD wall sign and retail shelf inside the salon"
               className="h-[340px] w-full object-cover md:h-[600px]"
               style={{ y: reduced ? 0 : yLead }}
             />
           </div>
           <div className="overflow-hidden rounded-sm">
             <motion.img
-              src={ASSETS.gallery[2]}
-              alt="Studio interior detail, checkered accent wall"
+              src={ASSETS.atmosphere.booth}
+              alt="DHD at a trade show, Nat Lewis backdrop and product display"
               className="h-[280px] w-full object-cover object-left"
               style={{ y: reduced ? 0 : ySide }}
             />
