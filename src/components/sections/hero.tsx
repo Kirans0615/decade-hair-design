@@ -20,18 +20,16 @@ export function Hero() {
         className="absolute inset-0 bg-cover bg-center transition-opacity duration-700"
         style={{ backgroundImage: `url(${ASSETS.hero.poster})`, opacity: videoReady ? 0 : 1 }}
       />
-      {!reduced && (
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          src={ASSETS.hero.video}
-          poster={ASSETS.hero.poster}
-          autoPlay
-          muted
-          loop
-          playsInline
-          onCanPlay={() => setVideoReady(true)}
-        />
-      )}
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        src={ASSETS.hero.video}
+        poster={ASSETS.hero.poster}
+        autoPlay
+        muted
+        loop
+        playsInline
+        onCanPlay={() => setVideoReady(true)}
+      />
 
       <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/35 to-background/90" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(0,0,0,0.55)_100%)]" />

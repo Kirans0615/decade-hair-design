@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion, MotionConfig } from "framer-motion"
 import { useLenis } from "@/hooks/useLenis"
-import { useReducedMotion } from "@/hooks/useReducedMotion"
 import { DHDLogo } from "@/components/ui/dhd-logo"
 import { Cursor } from "@/components/ui/cursor"
 import { ScrollProgress } from "@/components/ui/scroll-progress"
@@ -19,19 +18,18 @@ import { Footer } from "@/components/sections/footer"
 
 export default function App() {
   useLenis()
-  const reduced = useReducedMotion()
-  const [loading, setLoading] = useState(!reduced)
+  // Many Windows machines report prefers-reduced-motion: reduce even when the
+  // user just turned off Windows' "Show animations" setting for performance,
+  // not for motion sensitivity — gating the intro/video on that flag made both
+  // silently never appear for a large share of Windows visitors. Always show
+  // them; MotionConfig below still simplifies the actual transitions for
+  // genuine reduced-motion users.
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Always resolve the overlay: if the preference flips to reduced while
-    // the intro is up, dismiss immediately instead of stranding it.
-    if (reduced) {
-      setLoading(false)
-      return
-    }
     const timer = setTimeout(() => setLoading(false), 1400)
     return () => clearTimeout(timer)
-  }, [reduced])
+  }, [])
 
   return (
     <MotionConfig reducedMotion="user">
