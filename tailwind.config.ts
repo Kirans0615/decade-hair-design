@@ -15,6 +15,7 @@ export default {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
         display: ["Fraunces", "serif"],
+        wordmark: ["Montserrat", "sans-serif"],
       },
       keyframes: {
         "fade-up": {

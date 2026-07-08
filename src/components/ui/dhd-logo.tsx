@@ -48,7 +48,7 @@ export function DHDLogo({ size = "md", animate = true, className }: DHDLogoProps
       </div>
 
       <motion.div
-        className={cn("flex font-display font-normal leading-none tracking-tight", s.mark)}
+        className={cn("flex gap-x-[0.12em] font-wordmark font-medium leading-none", s.mark)}
         variants={letterContainer}
         initial={animate ? "hidden" : "show"}
         animate="show"
