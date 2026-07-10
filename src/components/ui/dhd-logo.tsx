@@ -3,21 +3,48 @@ import { cn } from "@/lib/utils"
 import { letterContainer, letterChild, underlineDraw, fadeUp } from "@/lib/animation-variants"
 
 const SIZES = {
-  sm: { mark: "text-2xl", crest: "h-3.5 w-3.5", sub: "text-[10px]", gap: "gap-1" },
-  md: { mark: "text-4xl", crest: "h-5 w-5", sub: "text-xs", gap: "gap-1.5" },
-  lg: { mark: "text-7xl md:text-9xl", crest: "h-8 w-8 md:h-10 md:w-10", sub: "text-base md:text-lg", gap: "gap-2 md:gap-3" },
+  sm: { mark: "text-2xl", crest: "h-3.5 w-3.5", sub: "text-[10px]", gap: "gap-1", stroke: "1.25px" },
+  md: { mark: "text-4xl", crest: "h-5 w-5", sub: "text-xs", gap: "gap-1.5", stroke: "1.5px" },
+  lg: { mark: "text-7xl md:text-9xl", crest: "h-8 w-8 md:h-10 md:w-10", sub: "text-base md:text-lg", gap: "gap-2 md:gap-3", stroke: "2.5px" },
 } as const
 
 interface DHDLogoProps {
   size?: keyof typeof SIZES
   animate?: boolean
+  /** Compact mode renders only the wordmark, no byline/underline stack —
+   *  for contexts (like a navbar) sitting on one line next to other single-line text. */
+  compact?: boolean
   className?: string
 }
 
 const LETTERS = ["D", "H", "D"]
 
-export function DHDLogo({ size = "md", animate = true, className }: DHDLogoProps) {
+export function DHDLogo({ size = "md", animate = true, compact = false, className }: DHDLogoProps) {
   const s = SIZES[size]
+
+  const wordmark = (
+    <motion.div
+      className={cn("flex gap-x-[0.12em] font-wordmark font-light leading-none text-transparent", s.mark)}
+      style={{ WebkitTextStroke: `${s.stroke} hsl(var(--foreground))` }}
+      variants={letterContainer}
+      initial={animate ? "hidden" : "show"}
+      animate="show"
+    >
+      {LETTERS.map((letter, i) => (
+        <motion.span key={`${letter}-${i}`} variants={letterChild}>
+          {letter}
+        </motion.span>
+      ))}
+    </motion.div>
+  )
+
+  if (compact) {
+    return (
+      <div className={cn("inline-flex items-center text-foreground", className)}>
+        {wordmark}
+      </div>
+    )
+  }
 
   return (
     <div className={cn("inline-flex flex-col items-center text-foreground", s.gap, className)}>
@@ -47,18 +74,7 @@ export function DHDLogo({ size = "md", animate = true, className }: DHDLogoProps
         />
       </div>
 
-      <motion.div
-        className={cn("flex gap-x-[0.12em] font-wordmark font-medium leading-none", s.mark)}
-        variants={letterContainer}
-        initial={animate ? "hidden" : "show"}
-        animate="show"
-      >
-        {LETTERS.map((letter, i) => (
-          <motion.span key={`${letter}-${i}`} variants={letterChild}>
-            {letter}
-          </motion.span>
-        ))}
-      </motion.div>
+      {wordmark}
     </div>
   )
 }

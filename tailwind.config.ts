@@ -16,6 +16,7 @@ export default {
         sans: ["Inter", "sans-serif"],
         display: ["Fraunces", "serif"],
         wordmark: ["Montserrat", "sans-serif"],
+        label: ["Fredoka", "sans-serif"],
       },
       keyframes: {
         "fade-up": {

@@ -46,7 +46,7 @@ export function Products() {
                   />
                 </div>
                 <div className="mt-5 flex items-baseline justify-between gap-3">
-                  <h4 className="font-display text-xl italic">{product.name}</h4>
+                  <h4 className="font-label text-lg font-medium">{product.name}</h4>
                   <span className="shrink-0 font-sans text-[11px] uppercase tracking-[0.25em] text-muted">
                     {product.size}
                   </span>

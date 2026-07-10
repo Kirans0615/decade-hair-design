@@ -36,9 +36,9 @@ export function Navbar() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
           <a href="#top" aria-label="Decade Hair Design home">
-            <DHDLogo size="sm" animate={false} />
+            <DHDLogo size="sm" animate={false} compact />
           </a>
-          <nav className="hidden gap-8 md:flex">
+          <nav className="hidden gap-8 lg:flex">
             {LINKS.map((link) => (
               <a
                 key={link.href}
@@ -49,14 +49,14 @@ export function Navbar() {
               </a>
             ))}
           </nav>
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <MagneticButton size="default" variant="outline">
               Book Now
             </MagneticButton>
           </div>
           <button
             aria-label="Open menu"
-            className="text-foreground md:hidden"
+            className="text-foreground lg:hidden"
             onClick={() => setOpen(true)}
           >
             <Menu className="h-6 w-6" />
@@ -73,7 +73,7 @@ export function Navbar() {
             exit={{ opacity: 0 }}
           >
             <div className="flex items-center justify-between px-6 py-4">
-              <DHDLogo size="sm" animate={false} />
+              <DHDLogo size="sm" animate={false} compact />
               <button aria-label="Close menu" className="text-foreground" onClick={() => setOpen(false)}>
                 <X className="h-6 w-6" />
               </button>

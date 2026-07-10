@@ -9,7 +9,7 @@ describe("ASSETS manifest", () => {
     expect(ASSETS.hero.video).toBe(`${import.meta.env.BASE_URL}assets/hero/hero-video.mp4`)
     expect(ASSETS.hero.poster).toBe(`${import.meta.env.BASE_URL}assets/hero/hero-poster.jpg`)
   })
-  it("exposes exactly 2 product images", () => {
-    expect(Object.keys(ASSETS.products)).toHaveLength(2)
+  it("exposes exactly 14 product images", () => {
+    expect(Object.keys(ASSETS.products)).toHaveLength(14)
   })
 })
